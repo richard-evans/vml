@@ -1,0 +1,14 @@
+Key data
+Tc 1043.0
+kc
+mu
+Crystal structure BCC
+Unit cell size 2.86
+Lambda
+
+Empirical model parameters
+
+Calculation details
+
+Zip Fe.zip
+--readme - author, date, version, calculation details, source references
