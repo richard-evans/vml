@@ -1,0 +1,59 @@
+#------------------------------------------
+# Sample vampire input file to perform
+# NdFeB Curie temperature simulation
+#
+#------------------------------------------
+
+#------------------------------------------
+# Creation attributes:
+#------------------------------------------
+create:crystal-structure = NdFeB
+
+dimensions:unit-cell-size = 8.8 !A
+
+dimensions:system-size-x = 10.0 !nm
+dimensions:system-size-y = 10.0 !nm
+dimensions:system-size-z = 10.0 !nm
+
+create:periodic-boundaries-x
+create:periodic-boundaries-y
+create:periodic-boundaries-z
+
+#------------------------------------------
+# Material Files:
+#------------------------------------------
+material:file = NdFeB.mat
+#------------------------------------------
+# Simulation attributes:
+#------------------------------------------
+sim:minimum-temperature = 0
+sim:maximum-temperature = 750
+sim:temperature-increment = 5
+sim:equilibration-time-steps = 10000
+sim:loop-time-steps = 20000
+sim:time-steps-increment = 1
+
+exchange:function = material-exponential
+exchange:unit-cell-category-exchange-parameters[1][1] = 0.0, 0.4, 0.0
+exchange:unit-cell-category-exchange-parameters[1][2] = 0.0, 0.4, 1.0
+exchange:unit-cell-category-exchange-parameters[2][2] = 36.9434, 0.0908, -0.229572
+exchange:nn-cutoff-range[1][2] = 1.1364
+exchange:nn-cutoff-range[2][1] = 1.1364
+exchange:nn-cutoff-range[2][2] = 1.4205
+exchange:interaction-cutoff-range[1][2] = 1.0
+exchange:interaction-cutoff-range[2][1] = 1.0
+exchange:interaction-cutoff-range[2][2] = 1.0
+
+#------------------------------------------
+# Program and integrator details
+#------------------------------------------
+sim:program = curie-temperature
+sim:integrator = monte-carlo
+
+#------------------------------------------
+# data output
+#------------------------------------------
+output:temperature
+output:material-mean-magnetisation
+
+config:atoms

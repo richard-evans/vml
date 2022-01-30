@@ -1,0 +1,59 @@
+#------------------------------------------
+# Sample vampire input file to perform
+# NdFeB Curie temperature simulation
+#
+#------------------------------------------
+
+#------------------------------------------
+# Creation attributes:
+#------------------------------------------
+create:crystal-structure = SmFeN
+
+dimensions:unit-cell-size = 8.566 !A
+
+dimensions:system-size-x = 8.566 !nm
+dimensions:system-size-y = 8.566 !nm
+dimensions:system-size-z = 4.802 !nm
+
+create:periodic-boundaries-x
+create:periodic-boundaries-y
+create:periodic-boundaries-z
+
+#------------------------------------------
+# Material Files:
+#------------------------------------------
+material:file = SmFeTiN.mat
+#------------------------------------------
+# Simulation attributes:
+#------------------------------------------
+sim:minimum-temperature = 0
+sim:maximum-temperature = 800
+sim:temperature-increment = 5
+sim:equilibration-time-steps = 10000
+sim:loop-time-steps = 20000
+sim:time-steps-increment = 1
+
+exchange:function = material-exponential
+exchange:unit-cell-category-exchange-parameters[1][1] = 0.0, 0.4, 0.0
+exchange:unit-cell-category-exchange-parameters[1][2] = 750.947, 0.0467, 0.0
+exchange:unit-cell-category-exchange-parameters[2][2] = 39.3566, 0.0933, -0.24457 
+exchange:nn-cutoff-range[1][2] = 0.9339248191
+exchange:nn-cutoff-range[2][1] = 0.9339248191
+exchange:nn-cutoff-range[2][2] = 1.167406024
+exchange:interaction-cutoff-range[1][2] = 1.0
+exchange:interaction-cutoff-range[2][1] = 1.0
+exchange:interaction-cutoff-range[2][2] = 1.0
+
+#------------------------------------------
+# Program and integrator details
+#------------------------------------------
+sim:program = curie-temperature
+sim:integrator = monte-carlo
+
+#------------------------------------------
+# data output
+#------------------------------------------
+output:temperature
+output:material-mean-magnetisation
+
+config:atoms
